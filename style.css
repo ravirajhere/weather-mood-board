@@ -1,0 +1,38 @@
+body { transition: background 0.8s ease; font-family: system-ui; }
+
+.theme-sunny  { background: linear-gradient(135deg, #f6d365, #fda085); }
+.theme-rain   { background: linear-gradient(135deg, #4b6cb7, #182848); color: white; }
+.theme-snow   { background: linear-gradient(135deg, #e0eafc, #cfdef3); }
+.theme-storm  { background: linear-gradient(135deg, #232526, #414345); color: white; }
+.theme-fog    { background: linear-gradient(135deg, #bdc3c7, #2c3e50); color: white; }
+.theme-cloudy { background: linear-gradient(135deg, #d7d2cc, #304352); color: white; }
+
+/* Sun animation */
+.theme-sunny::before {
+  content: '☀️';
+  position: fixed; top: 10%; right: 10%;
+  font-size: 8rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-20px); }
+}
+
+/* Rain drops */
+.theme-rain::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(
+    180deg, transparent 0, transparent 20px,
+    rgba(255,255,255,0.1) 20px, rgba(255,255,255,0.1) 22px
+  );
+  animation: rain 0.5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rain {
+  from { background-position: 0 0; }
+  to   { background-position: 0 22px; }
+}
